@@ -2,7 +2,7 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <title>Bijli Live - Status</title>
+  <title>जाम | Bijli Live - Status</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="icon.png">
   <style>
@@ -87,6 +87,7 @@
 </head>
 <body>
   <div class="container">
+    <h1>जाम फीडर</h1>
     <h2>🔌 बिजली की स्थिति</h2>
     <div id="currentStatus">⏳ लोड हो रहा है...</div>
     <div id="lastUpdated">✨ अंतिम अपडेट: ---</div>
@@ -101,16 +102,16 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
     import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js";
 
-    const firebaseConfig = {
-    apiKey: "AIzaSyAEsOOvrCEUt_1WKtASJvYrQQbHZDQjo_s",
-    authDomain: "login-bijli.firebaseapp.com",
-    databaseURL: "https://login-bijli-default-rtdb.firebaseio.com",
-    projectId: "login-bijli",
-    storageBucket: "login-bijli.firebasestorage.app",
-    messagingSenderId: "956625759809",
-    appId: "1:956625759809:web:82d20e1a9c81b136d020c0",
-    measurementId: "G-LQ8WLHDSZZ"
-  };
+    const firebaseConfig = {  
+      apiKey: "AIzaSyAEsOOvrCEUt_1WKtASJvYrQQbHZDQjo_s",  
+      authDomain: "login-bijli.firebaseapp.com",  
+      databaseURL: "https://login-bijli-default-rtdb.firebaseio.com",  
+      projectId: "login-bijli",  
+      storageBucket: "login-bijli.appspot.com",  
+      messagingSenderId: "956625759809",  
+      appId: "1:956625759809:web:82d20e1a9c81b136d020c0",  
+      measurementId: "G-LQ8WLHDSZZ"  
+    };
 
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
