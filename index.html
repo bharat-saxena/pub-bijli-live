@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bijli Live Admin Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+  <link rel="icon" href="icon.png" type="image/png">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+      background: url("https://thumbs.dreamstime.com/b/electricity-scene-power-pylons-conducting-electrical-power-sunset-50590843.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+    form {
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      color: #ffffff;
+    }
+    h2 {
+      text-align: center;
+      color: #fff;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, .drop-zone {
+      width: 95%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+    .drop-zone {
+      border: 2px dashed #ffffff95;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 150px;
+      text-align: center;
+      color: #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .drop-zone:hover {
+      background-color: #f0f0f0;
+    }
+    .drop-zone.dragover {
+      background-color: #e6f7ff;
+      border-color: #00aaff;
+      color: #00aaff;
+    }
+    .drop-zone p {
+      pointer-events: none;
+    }
+    button {
+      font-family: 'jua';
+      width: 100%;
+      background: rgba(247, 147, 0, 1);
+margin-top: 10px;
+      padding: 12px;
+border-radius: 10px;
+border-width: 0px;
+border-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      cursor: pointer;
+font-size: 15px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+transition: 0.3s;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+    
+    input::placeholder {color: rgba(255, 255, 255, 0.5);}
+    
+    footer p {
+      font-family: 'Jua';
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff50;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <form action="https://www.formbackend.com/f/bd43cb5690a10364" method="POST" enctype="multipart/form-data">
+    <h2><img src="https://bijli-live.vercel.app/logo.png" width="180px" style="margin-top: -10px;" alt="Bijli"><br>Admin Registration</h2>
+
+    <label for="photo">Upload Photo</label>
+    <div class="drop-zone" id="drop-zone">
+      <p>📁 Drag and drop photo here or click to browse<br>👤 अपना फोटो अपलोड करिए...</p>
+    </div>
+    <input type="file" name="Photo" id="photo" accept="image/*" required>
+
+    <label for="name">Full Name</label>
+    <input type="text" name="Full Name" id="name" placeholder="अपना पूरा नाम लिखिए..." required>
+
+    <label for="mobile">Mobile Number</label>
+    <input type="tel" name="Mobile Number" id="mobile" pattern="[0-9]{10}" placeholder="अपना मोबाइल नंबर दर्ज करिए..." required>
+
+    <label for="dob">Date of Birth / जन्मतिथि</label>
+    <input type="date" name="DOB" id="dob" placeholder="अपनी जन्मतिथि लिखिए..." required>
+
+    <label for="password">Password</label>
+    <input type="password" name="Password" id="password" minlength="8" placeholder="एक 8 अंकों से अधिक का पासवर्ड लिखिए..." required>
+
+    <label for="pin">6-Digit PIN</label>
+    <input type="text" name="Admin PIN" id="pin" pattern="\d{6}" maxlength="6" placeholder="एक 6 अंकों का पिन लिखिए..." required>
+
+    <button type="submit">Register</button>
+    <footer>
+        <p>© MIT 2025 | Made with ⁠♡ by ViruDaya</p>
+    </footer>
+  </form>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('photo');
+
+    // Open file selector on drop zone click
+    dropZone.addEventListener('click', () => fileInput.click());
+
+    // Highlight drop zone when file is dragged over
+    dropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', () => {
+      dropZone.classList.remove('dragover');
+    });
+
+    // Handle file drop
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+
+      if (e.dataTransfer.files.length > 0) {
+        fileInput.files = e.dataTransfer.files;
+        dropZone.innerHTML = `<p>📸 ${e.dataTransfer.files[0].name}</p>`;
+      }
+    });
+
+    // Update preview if file selected using input
+    fileInput.addEventListener('change', () => {
+      if (fileInput.files.length > 0) {
+        dropZone.innerHTML = `<p>📸 ${fileInput.files[0].name}</p>`;
+      }
+    });
+  </script>
+
+</body>
+</html>
